@@ -12,6 +12,7 @@ import Foundation
  *  The delegate of a PaperOnboarding object must adopt the PaperOnboardingDelegate protocol. Optional methods of the
  protocol allow the delegate to manage items, configure items, and perform other actions.
  */
+@objc(PaperOnboardingDelegate)
 public protocol PaperOnboardingDelegate {
 
     /**

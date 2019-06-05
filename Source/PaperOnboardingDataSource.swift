@@ -12,6 +12,7 @@ import UIKit
  *  The PaperOnboardingDataSource protocol is adopted by an object that mediates the application’s data model for a PaperOnboarding object.
  The data source information it needs to construct and modify a PaperOnboarding.
  */
+@objc(PaperOnboardingDataSource)
 public protocol PaperOnboardingDataSource {
 
     /**
@@ -28,7 +29,7 @@ public protocol PaperOnboardingDataSource {
      - parameter index: An index of item in PaperOnboarding.
      - returns: configuration info for item
      */
-    func onboardingItem(at index: Int) -> OnboardingItemInfo
+    func onboardingItem(at index: Int) -> OnboardingItemInfoObjC
 
     /**
      Asks the color for PageView item

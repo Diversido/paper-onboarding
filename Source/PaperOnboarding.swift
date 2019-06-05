@@ -36,7 +36,20 @@ public struct OnboardingItemInfo {
     }
 }
 
+@objc(OnboardingItemInfoObjC)
+open class OnboardingItemInfoObjC : NSObject {
+    internal var wrappedValue: OnboardingItemInfo
+    
+    @objc public init (informationImage: UIImage, title: String, description: String, pageIcon: UIImage, color: UIColor, titleColor: UIColor, descriptionColor: UIColor, titleFont: UIFont, descriptionFont: UIFont, descriptionLabelPadding: CGFloat = 0, titleLabelPadding: CGFloat = 0) {
+        wrappedValue = OnboardingItemInfo(informationImage: informationImage,
+                                          title: title, description: description, pageIcon: pageIcon, color: color, titleColor: titleColor,
+                                          descriptionColor: descriptionColor, titleFont: titleFont, descriptionFont: descriptionFont,
+                                          descriptionLabelPadding: descriptionLabelPadding, titleLabelPadding: titleLabelPadding)
+    }
+}
+
 /// An instance of PaperOnboarding which display collection of information.
+@objc(PaperOnboarding)
 open class PaperOnboarding: UIView {
 
     ///  The object that acts as the data source of the  PaperOnboardingDataSource.
@@ -64,10 +77,9 @@ open class PaperOnboarding: UIView {
     public fileprivate(set) var gestureControl: GestureControl?
     fileprivate var contentView: OnboardingContentView?
     
-    public init(pageViewBottomConstant: CGFloat = 32) {
+    @objc public init(pageViewBottomConstant: CGFloat = 32) {
         
         self.pageViewBottomConstant = pageViewBottomConstant
-
         super.init(frame: CGRect.zero)
     }
     
@@ -78,6 +90,11 @@ open class PaperOnboarding: UIView {
         self.pageViewRadius = 8
         
         super.init(coder: aDecoder)
+    }
+    
+    public override required init(frame: CGRect) {
+        self.pageViewBottomConstant = 32
+        super.init(frame: frame)
     }
 }
 
@@ -183,7 +200,7 @@ extension PaperOnboarding {
         var items = [OnboardingItemInfo]()
         for index in 0 ..< itemsCount {
             let info = dataSource.onboardingItem(at: index)
-            items.append(info)
+            items.append(info.wrappedValue)
         }
         return items
     }

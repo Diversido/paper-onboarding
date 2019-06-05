@@ -12,6 +12,7 @@ protocol GestureControlDelegate: class {
     func gestureControlDidSwipe(_ direction: UISwipeGestureRecognizer.Direction)
 }
 
+@objc(GestureControl)
 public class GestureControl: UIView {
 
     weak var delegate: GestureControlDelegate!

@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc(OnboardingContentViewItem)
 open class OnboardingContentViewItem: UIView {
 
     public var descriptionBottomConstraint: NSLayoutConstraint?
