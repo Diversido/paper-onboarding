@@ -16,10 +16,13 @@ open class OnboardingContentViewItem: UIView {
     public var informationImageWidthConstraint: NSLayoutConstraint?
     public var informationImageHeightConstraint: NSLayoutConstraint?
     
+    @objc(imageView)
     open var imageView: UIImageView?
+    @objc(titleLabel)
     open var titleLabel: UILabel?
+    @objc(descriptionLabel)
     open var descriptionLabel: UILabel?
-
+    
     init(titlePadding: CGFloat, descriptionPadding: CGFloat) {
         super.init(frame: .zero)
         commonInit(titlePadding: titlePadding, descriptionPadding: descriptionPadding)
@@ -27,6 +30,11 @@ open class OnboardingContentViewItem: UIView {
 
     public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc(getImageView)
+    public func getImageView () -> UIImageView? {
+        return imageView ?? nil
     }
 }
 
